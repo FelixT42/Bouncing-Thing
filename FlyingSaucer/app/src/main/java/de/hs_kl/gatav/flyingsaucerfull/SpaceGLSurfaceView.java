@@ -27,8 +27,8 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
 
     private SpaceRenderer renderer;
     public Context context;  // activity context
-
-    private static final int obstacleCount = 15;
+    private static int ballcount = 0;  //gibt anzahl der bälle an
+    private static final int obstacleCount = 8;  //gibt anzahl der Hindernisse an
     private static final float minSpawnDistanceToPlayer = 1.5f;
     private static final float minSpawnDistanceBetweenObstacles = 1.5f;
     private static final float asteroidMinScale = 0.8f;
@@ -125,7 +125,7 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
             float obj1Z = obj1.getZ();
             float obj2X = obj2.getX();
             float obj2Z = obj2.getZ();
-            float squaredHitDistance = 1;//((obj1.scale + obj2.scale) / 2) * ((obj1.scale + obj2.scale) / 2);
+            float squaredHitDistance = ((obj1.scale + obj2.scale) / 2) * ((obj1.scale + obj2.scale) / 2);
             float squaredDistance = (obj1X - obj2X) * (obj1X - obj2X) + (obj1Z - obj2Z) * (obj1Z - obj2Z);
 
             if(squaredDistance < squaredHitDistance)
@@ -326,7 +326,13 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
             if (obstacleCount > obstacles.size()) {
                 for (int i = 0; i < obstacleCount - obstacles.size(); ++i) {
                     // determine what kind of obstacle is spawned next
-                    int type = Math.random() < 0.85?1:2;  // 1 Asteroid, 2 BorgCube
+
+                    int type;
+                    if (ballcount<1) {
+                        type = 1;  // 1 Asteroid, 2 BorgCube
+                        ballcount++;
+                    }
+                    else type = 2;
 
                     float scale = 1.0f;
                     if(type == 1) {
@@ -398,10 +404,10 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
 
                     if(type == 1) {
                         Asteroid newAsteroid = new Asteroid();
-                        newAsteroid.scale = scale;
+                        newAsteroid.scale = 1;
                         newAsteroid.randomizeRotationAxis();
                         newAsteroid.angularVelocity = 50;
-                        newAsteroid.setPosition(spawnX, 0, spawnZ);
+                        newAsteroid.setPosition(0, 0, 0);
                         newAsteroid.velocity = velocity;
                         obstacles.add(newAsteroid);
                     }
@@ -410,6 +416,7 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                         newBorgCube.scale = scale;
                         newBorgCube.velocity = velocity;
                         newBorgCube.setPosition(spawnX, 0, spawnZ);
+                        newBorgCube.speed = 0.1f;
                         obstacles.add(newBorgCube);
                     }
                 }

@@ -15,7 +15,7 @@ public class Asteroid extends Obstacle {
     public float rotation = 0.0f;
     // rotation speed in deg/s
     public float angularVelocity = 0.0f;
-    public float rotationAxis[] = {0.0f, 1.0f, 0.0f};
+    public float rotationAxis[] = {0.0f, 2.0f, 0.0f};
 
     private static float colorA[] = {0.46f, 0.22f, 0.0f};
     private static float colorB[] = {0.36f, 0.25f, 0.14f};
