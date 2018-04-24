@@ -23,14 +23,15 @@ public class SpaceShip extends SpaceObject {
 
 
     private static final float body_vertices[] = {
-            -0.5f, 0.5f, -0.5f,	// btl 0
-            -0.5f, -0.5f, -0.5f,// bbl 1
-            0.5f, -0.5f, -0.5f,	// bbr 2
-            0.5f, 0.5f, -0.5f,	// btr 3
-            -0.5f, 0.5f, 0.5f,	// ftl 4
-            -0.5f, -0.5f, 0.5f,	// fbl 5
-            0.5f, -0.5f, 0.5f,	// fbr 6
-            0.5f, 0.5f, 0.5f	// ftr 7
+            -1f, 0.1f, -0.1f,	// btl 0
+            -1f, -0.5f, -0.1f,// bbl 1
+            0.5f, -0.5f, -0.1f,	// bbr 2
+            0.5f, 0.1f, -0.1f,	// btr 3
+
+            -1f, 0.1f, 0.1f,	// ftl 4
+            -1f, -0.5f, 0.1f,	// fbl 5
+            0.5f, -0.5f, 0.1f,	// fbr 6
+            0.5f, 0.1f, 0.1f	// ftr 7
     };
     private static final short body_quads[] = {
             3, 2, 1, 0, // back
