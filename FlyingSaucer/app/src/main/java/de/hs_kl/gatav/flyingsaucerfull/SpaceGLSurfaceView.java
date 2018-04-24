@@ -415,6 +415,7 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                         BorgCube newBorgCube = new BorgCube();
                         newBorgCube.scale = scale;
                         newBorgCube.velocity = velocity;
+                        while (spawnZ<0.0 || spawnZ>4.0) spawnZ = (float)(Math.random()* 10 %4.0) ;
                         newBorgCube.setPosition(spawnX, 0, spawnZ);
                         newBorgCube.speed = 0.1f;
                         obstacles.add(newBorgCube);
