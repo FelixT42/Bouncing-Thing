@@ -58,22 +58,23 @@ public class MainActivity extends Activity implements SensorEventListener {
         if(event.sensor.getType() != Sensor.TYPE_ACCELEROMETER)
             return;
 
+        // Hier wird der Sensor abgefragt und die X-Achse entsprechend verändert. Durch vz=0 kann das Trackpas nicht nach oben oder unten
         switch(mDisplay.getRotation()) {
             case Surface.ROTATION_0:
                 //Log.d("rot", ""+0);
-                spaceGLSurfaceView.setShipVelocity(-event.values[0], 0, -event.values[1]);
+                spaceGLSurfaceView.setShipVelocity(-event.values[0], 0, 0);
                 break;
             case Surface.ROTATION_90:
                 //Log.d("rot", ""+90);
-                spaceGLSurfaceView.setShipVelocity(event.values[1], 0, -event.values[0]);
+                spaceGLSurfaceView.setShipVelocity(event.values[1], 0, 0);
                 break;
             case Surface.ROTATION_180:
                 //Log.d("rot", ""+180);
-                spaceGLSurfaceView.setShipVelocity(event.values[0], 0, event.values[1]);
+                spaceGLSurfaceView.setShipVelocity(event.values[0], 0, 0);
                 break;
             case Surface.ROTATION_270:
                 //Log.d("rot", ""+270);
-                spaceGLSurfaceView.setShipVelocity(-event.values[1], 0, event.values[0]);
+                spaceGLSurfaceView.setShipVelocity(-event.values[1], 0, 0);
                 break;
         }
     }
