@@ -172,8 +172,43 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
             for (Obstacle obstacle : obstacles) {
                 if (areColliding(ship, obstacle)) {
                     if (obstacle instanceof Asteroid) {
-                        // add some damage to the ship
-                        obstaclesToBeRemoved.add(obstacle);
+
+                        float sx = ship.getX();
+                        float sz = ship.getZ();
+
+                        float ax = obstacle.getX();
+                        float az = obstacle.getZ();
+
+                        float cv1[] = ship.velocity;
+                        float cv2[] = obstacle.velocity;
+                        float csv1 = cv1[2] / cv1[0]; // slope of velocity 1
+                        float csv2 = cv2[2] / cv2[0]; // slope of velocity 2
+
+                        float csz = (sz - az) / (sx - ax); // central slope between centers
+                        float cst = -1.0f / csz; // tangent slope perpendicular to central line
+
+                        // calculate vt for both velocities
+                        float cvt1[] = new float[3];
+                        float cvt2[] = new float[3];
+                        cvt1[0] = cv1[0] * (csz - csv1) / (csz - cst);
+                        cvt1[2] = cvt1[0] * cst;
+
+                        cvt2[0] = cv2[0] * (csz - csv2) / (csz - cst);
+                        cvt2[2] = cvt2[0] * cst;
+
+                        // calculate vz for both velocities
+                        float cvz1[] = new float[3];
+                        float cvz2[] = new float[3];
+                        cvz1[0] = cv1[0] * (cst - csv1) / (cst - csz);
+                        cvz1[2] = cvz1[0] * csz;
+
+                        cvz2[0] = cv2[0] * (cst - csv2) / (cst - csz);
+                        cvz2[2] = cvz2[0] * csz;
+
+
+                        cv2[0] = cvt2[0] - cvz2[0] + cvz1[0]*2.0f;
+                        cv2[2] = cvt2[2] - cvz2[2] + cvz1[2]*2.0f;
+
                     }
                     if (obstacle instanceof BorgCube) {
                          // add some more because the borg are
@@ -183,7 +218,6 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                     if (obstacle instanceof Starship){
 
                     }
-                    //ODOT
                 }
             }
             // remove obsolete obstacles
