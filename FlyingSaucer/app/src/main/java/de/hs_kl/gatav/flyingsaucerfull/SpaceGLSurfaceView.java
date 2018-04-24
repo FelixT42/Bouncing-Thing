@@ -126,6 +126,7 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
             float obj2X = obj2.getX();
             float obj2Z = obj2.getZ();
             float squaredHitDistance = ((obj1.scale + obj2.scale) / 2) * ((obj1.scale + obj2.scale) / 2);
+
             float squaredDistance = (obj1X - obj2X) * (obj1X - obj2X) + (obj1Z - obj2Z) * (obj1Z - obj2Z);
 
             if(squaredDistance < squaredHitDistance)
@@ -172,7 +173,6 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
             for (Obstacle obstacle : obstacles) {
                 if (areColliding(ship, obstacle)) {
                     if (obstacle instanceof Asteroid) {
-                        // add some damage to the ship
 
                         float sx = ship.getX();
                         float sz = ship.getZ();
