@@ -36,6 +36,7 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
 
     private ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
     private SpaceShip ship = new SpaceShip();
+    {ship.setZ(-7);}
     private Starship starship = new Starship();
     { obstacles.add(starship); }
 
@@ -107,10 +108,10 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
         private void updateShip(float fracSec) {
             ship.update(fracSec);
             // keep ship within window boundaries
-            if (ship.getX() < boundaryLeft + ship.scale / 2)
-                ship.setX(boundaryLeft + ship.scale / 2);
-            if (ship.getX() > boundaryRight - ship.scale / 2)
-                ship.setX(boundaryRight - ship.scale / 2);
+            if (ship.getX() < boundaryLeft + ship.scale /(float) 0.69)
+                ship.setX(boundaryLeft + ship.scale /(float) 0.69);
+            if (ship.getX() > boundaryRight - ship.scale / (float)1.07)
+                ship.setX(boundaryRight - ship.scale / (float) 1.07);
             if (ship.getZ() < boundaryBottom + ship.scale / 2)
                 ship.setZ(boundaryBottom + ship.scale / 2);
             if (ship.getZ() > boundaryTop - ship.scale / 2)
