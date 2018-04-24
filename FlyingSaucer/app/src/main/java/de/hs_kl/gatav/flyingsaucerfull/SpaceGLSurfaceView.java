@@ -124,7 +124,7 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
             float obj1Z = obj1.getZ();
             float obj2X = obj2.getX();
             float obj2Z = obj2.getZ();
-            float squaredHitDistance = ((obj1.scale + obj2.scale) / 2) * ((obj1.scale + obj2.scale) / 2);
+            float squaredHitDistance = 1;//((obj1.scale + obj2.scale) / 2) * ((obj1.scale + obj2.scale) / 2);
             float squaredDistance = (obj1X - obj2X) * (obj1X - obj2X) + (obj1Z - obj2Z) * (obj1Z - obj2Z);
 
             if(squaredDistance < squaredHitDistance)
