@@ -64,7 +64,7 @@ public class BorgCube extends Obstacle {
             gl.glLineWidth(1.0f);
 
             gl.glVertexPointer(3, GL10.GL_FLOAT, 0, borgCubeVerticesBuffer);
-            gl.glColor4f(255.0f, 0.0f, 0.0f, 0.0f);
+            gl.glColor4f(0.0f, 1.0f, 0.0f, 0.0f);
             for(int i = 0; i < (borgCubeQuadsBuffer.capacity() / 4); i++) {
                 borgCubeQuadsBuffer.position(4 * i);
                 gl.glDrawElements(GL10.GL_LINE_LOOP, 4, GL10.GL_UNSIGNED_SHORT, borgCubeQuadsBuffer);

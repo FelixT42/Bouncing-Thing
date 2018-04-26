@@ -18,20 +18,20 @@ public class SpaceShip extends SpaceObject {
 
 
 
-    private static float[] colorBody = { 0.0f, 0.0f, 0.0f };
+    private static float[] colorBody = { 0.8f, 0.8f, 0.8f };
 
 
 
     private static final float body_vertices[] = {
-            -1f, 0.1f, -0.1f,	// btl 0
-            -1f, -0.5f, -0.1f,// bbl 1
-            0.5f, -0.5f, -0.1f,	// bbr 2
-            0.5f, 0.1f, -0.1f,	// btr 3
+            -0.7f, 0.1f, -0.1f,	// btl 0
+            -0.7f, -0.5f, -0.1f,// bbl 1
+            0.7f, -0.5f, -0.1f,	// bbr 2
+            0.7f, 0.1f, -0.1f,	// btr 3
 
-            -1f, 0.1f, 0.1f,	// ftl 4
-            -1f, -0.5f, 0.1f,	// fbl 5
-            0.5f, -0.5f, 0.1f,	// fbr 6
-            0.5f, 0.1f, 0.1f	// ftr 7
+            -0.7f, 0.1f, 0.1f,	// ftl 4
+            -0.7f, -0.5f, 0.1f,	// fbl 5
+            0.7f, -0.5f, 0.1f,	// fbr 6
+            0.7f, 0.1f, 0.1f	// ftr 7
     };
     private static final short body_quads[] = {
             3, 2, 1, 0, // back
