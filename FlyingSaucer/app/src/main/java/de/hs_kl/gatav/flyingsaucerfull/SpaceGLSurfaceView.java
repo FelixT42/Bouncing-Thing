@@ -33,7 +33,7 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
     private static final float minSpawnDistanceBetweenObstacles = 1.5f;
     private static final float asteroidMinScale = 0.8f;
     private static final float asteroidMaxScale = 1.0f;
-
+    private static int score =0;
     private ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
     private SpaceShip ship = new SpaceShip();
     {ship.setZ(-7);}
@@ -41,10 +41,13 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
     private Starship starship = new Starship();
     { obstacles.add(starship); }
 
+
+
     public SpaceGLSurfaceView(Context context) {
         super(context);
         renderer = new SpaceRenderer();
         setRenderer(renderer);
+
 
         setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
     }
