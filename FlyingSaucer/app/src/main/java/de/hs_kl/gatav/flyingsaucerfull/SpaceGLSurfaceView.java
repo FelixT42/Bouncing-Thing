@@ -342,9 +342,9 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                 for (int i = 0; i < obstacleCount - obstacles.size(); ++i) {
                     // determine what kind of obstacle is spawned next
 
-                    int type;
+                    int type;  // 1 Asteroid, 2 BorgCube
                     if (ballcount<1) {
-                        type = 1;  // 1 Asteroid, 2 BorgCube
+                        type = 1;
                         ballcount++;
                     }
                     else type = 2;
@@ -421,8 +421,11 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                         Asteroid newAsteroid = new Asteroid();
                         newAsteroid.scale = 1;
                         newAsteroid.randomizeRotationAxis();
-                        newAsteroid.angularVelocity = 50;
+                        newAsteroid.angularVelocity = 1;
                         newAsteroid.setPosition(0, 0, 0);
+                        velocity[0]= 0.0f;
+                        velocity[1]= 0.0f;
+                        velocity[2]= -3.0f;
                         newAsteroid.velocity = velocity;
                         newAsteroid.speed = 2.0f;
                         obstacles.add(newAsteroid);
