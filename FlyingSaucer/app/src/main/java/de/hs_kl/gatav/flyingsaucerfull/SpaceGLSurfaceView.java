@@ -150,6 +150,9 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                 // inactive while visible to the player.
                 float offset = obstacle.scale;
 
+                if((obstacle instanceof BorgCube) && obstacle.getZ()< -2){
+                    ((BorgCube) obstacle).velocity[2] = -((BorgCube) obstacle).velocity[2];
+                }
 
                 if (obstacle instanceof Asteroid){
                     if (obstacle.getX() < boundaryLeft + obstacle.scale /(float) 1)
