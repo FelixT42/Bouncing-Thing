@@ -18,7 +18,7 @@ public class SpaceShip extends SpaceObject {
 
 
 
-    private static float[] colorBody = { 0.8f, 0.8f, 0.8f };
+    private static float[] colorBody = { 0.0f, 0.0f, 0.0f };
 
 
 
