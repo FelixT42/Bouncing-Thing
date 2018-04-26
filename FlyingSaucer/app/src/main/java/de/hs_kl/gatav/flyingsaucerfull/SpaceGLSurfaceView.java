@@ -123,9 +123,9 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
         }
 
 
-<<<<<<< HEAD
+
         private boolean areColliding(SpaceObject obj1, SpaceObject obj2) {  //ship = obj1  asteroid = obj 2
-=======
+
         private boolean areColliding(SpaceObject obj1, SpaceObject obj2) {
 
             if(obj1 instanceof SpaceShip){
@@ -153,7 +153,6 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                 return false;
             }
 
->>>>>>> 895cc81908afee2cdffd71a3b153552a77451593
             float obj1X = obj1.getX();
             float obj1Z = obj1.getZ();
             float obj2X = obj2.getX();
