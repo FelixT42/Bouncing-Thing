@@ -121,6 +121,32 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
 
 
         private boolean areColliding(SpaceObject obj1, SpaceObject obj2) {
+
+            if(obj1 instanceof SpaceShip){
+                float obj1X = obj1.getX();
+                float obj1Z = obj1.getZ();
+                float obj2X = obj2.getX();
+                float obj2Z = obj2.getZ();
+                float squaredHitDistance = ((0.2f + obj2.scale) / 2) * ((0.2f + obj2.scale) / 2);
+                float squaredDistance = (obj1X - obj2X) * (obj1X - obj2X) + (obj1Z - obj2Z) * (obj1Z - obj2Z);
+
+                if(squaredDistance < squaredHitDistance)
+                    return true;
+                return false;
+            }
+            if(obj2 instanceof SpaceShip){
+                float obj1X = obj1.getX();
+                float obj1Z = obj1.getZ();
+                float obj2X = obj2.getX();
+                float obj2Z = obj2.getZ();
+                float squaredHitDistance = ((obj1.scale + 0.2f) / 2) * ((obj1.scale + 0.2f) / 2);
+                float squaredDistance = (obj1X - obj2X) * (obj1X - obj2X) + (obj1Z - obj2Z) * (obj1Z - obj2Z);
+
+                if(squaredDistance < squaredHitDistance)
+                    return true;
+                return false;
+            }
+
             float obj1X = obj1.getX();
             float obj1Z = obj1.getZ();
             float obj2X = obj2.getX();
@@ -186,7 +212,7 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
             for (Obstacle obstacle : obstacles) {
                 if (areColliding(ship, obstacle)) {
                     if (obstacle instanceof Asteroid) {
-                        ((Asteroid) obstacle).velocity[2]=-((Asteroid) obstacle).velocity[2]; //Y Wert umkehren
+                        ((Asteroid) obstacle).velocity[2]=-((Asteroid) obstacle).velocity[2]; //Z Wert umkehren
                         if(ship.velocity[0]>0){
                             ((Asteroid) obstacle).velocity[0]=  Math.abs(((Asteroid) obstacle).velocity[0]);
                         }
