@@ -34,7 +34,6 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
     private static final float asteroidMinScale = 0.8f;
     private static final float asteroidMaxScale = 1.0f;
 
-    //test GIT
     private ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
     private SpaceShip ship = new SpaceShip();
     {ship.setZ(-7);}
@@ -151,7 +150,18 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                 // inactive while visible to the player.
                 float offset = obstacle.scale;
 
-                if ((obstacle.getX() > boundaryRight + offset)
+
+                if (obstacle instanceof Asteroid){
+                    if (obstacle.getX() < boundaryLeft + obstacle.scale /(float) 1)
+                        obstacle.setX(boundaryLeft + obstacle.scale /(float) 1);
+                    if (obstacle.getX() > boundaryRight - obstacle.scale / (float)1.07)
+                        obstacle.setX(boundaryRight - obstacle.scale / (float) 1.07);
+                    if (obstacle.getZ() < boundaryBottom + obstacle.scale / 2)
+                        obstacle.setZ(boundaryBottom + obstacle.scale / 2);
+                    if (obstacle.getZ() > boundaryTop - obstacle.scale / 2)
+                        obstacle.setZ(boundaryTop - obstacle.scale / 2);
+                }
+                else if ((obstacle.getX() > boundaryRight + offset)
                         || (obstacle.getX() < boundaryLeft - offset)
                         || (obstacle.getZ() > boundaryTop + offset)
                         || (obstacle.getZ() < boundaryBottom - offset)) {
@@ -205,6 +215,10 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
 
                         cvz2[0] = cv2[0] * (cst - csv2) / (cst - csz);
                         cvz2[2] = cvz2[0] * csz;
+
+
+
+
 
 
                         cv2[0] = cvt2[0] - cvz2[0] + cvz1[0]*2.0f;
