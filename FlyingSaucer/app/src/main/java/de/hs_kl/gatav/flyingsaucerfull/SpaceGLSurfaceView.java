@@ -189,8 +189,13 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
             for (Obstacle obstacle : obstacles) {
                 if (areColliding(ship, obstacle)) {
                     if (obstacle instanceof Asteroid) {
-
                         ((Asteroid) obstacle).velocity[2]=-((Asteroid) obstacle).velocity[2]; //Y Wert umkehren
+                        if(ship.velocity[0]>0){
+                            ((Asteroid) obstacle).velocity[0]=  Math.abs(((Asteroid) obstacle).velocity[0]);
+                        }
+                        else if(ship.velocity[0]<0){
+                            ((Asteroid) obstacle).velocity[0]=  - Math.abs(((Asteroid) obstacle).velocity[0]);
+                        }
 
                     }
                     if (obstacle instanceof BorgCube) {
