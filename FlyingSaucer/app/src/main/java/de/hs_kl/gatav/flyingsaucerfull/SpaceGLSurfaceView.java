@@ -30,7 +30,7 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
     private static int ballcount = 0;  //gibt anzahl der bälle an
     private static final int obstacleCount = 8;  //gibt anzahl der Hindernisse an
     private static final float minSpawnDistanceToPlayer = 1.5f;
-    private static final float minSpawnDistanceBetweenObstacles = 3.0f;
+    private static final float minSpawnDistanceBetweenObstacles = 1.5f;
     private static final float asteroidMinScale = 0.8f;
     private static final float asteroidMaxScale = 1.0f;
     private static int score =0;
@@ -123,9 +123,6 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
         }
 
 
-<<<<<<< HEAD
-        private boolean areColliding(SpaceObject obj1, SpaceObject obj2) {  //ship = obj1  asteroid = obj 2
-=======
         private boolean areColliding(SpaceObject obj1, SpaceObject obj2) {
 
             if(obj1 instanceof SpaceShip){
@@ -175,7 +172,6 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                 */
             }
 
->>>>>>> 895cc81908afee2cdffd71a3b153552a77451593
             float obj1X = obj1.getX();
             float obj1Z = obj1.getZ();
             float obj2X = obj2.getX();
@@ -536,7 +532,7 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
             gl.glDisable(GL10.GL_DITHER);
             gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
 
-            gl.glClearColor(250.0f, 250.0f, 250.0f, 1.0f);
+            gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             gl.glEnable(GL10.GL_CULL_FACE);
             gl.glShadeModel(GL10.GL_FLAT);
             gl.glEnable(GL10.GL_DEPTH_TEST);

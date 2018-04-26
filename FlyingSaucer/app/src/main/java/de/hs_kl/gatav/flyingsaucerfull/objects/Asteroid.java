@@ -220,9 +220,9 @@ public class Asteroid extends Obstacle {
     public void randomizeColor() {
         // shades of brown
         float factor = (float) Math.random();
-        currentColor[0] = 0.0f;
-        currentColor[1] = 0.0f;
-        currentColor[2] = 255.0f;
+        currentColor[0] = factor * colorA[0] + (1.0f - factor) * colorB[0];
+        currentColor[1] = factor * colorA[1] + (1.0f - factor) * colorB[1];
+        currentColor[2] = factor * colorA[2] + (1.0f - factor) * colorB[2];
     }
 
 }
