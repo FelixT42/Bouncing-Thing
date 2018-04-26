@@ -38,6 +38,7 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
     private ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
     private SpaceShip ship = new SpaceShip();
     {ship.setZ(-7);}
+    {ship.speed =4.0f;}
     private Starship starship = new Starship();
     { obstacles.add(starship); }
 
@@ -409,6 +410,7 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                         newAsteroid.angularVelocity = 50;
                         newAsteroid.setPosition(0, 0, 0);
                         newAsteroid.velocity = velocity;
+                        newAsteroid.speed = 2.0f;
                         obstacles.add(newAsteroid);
                     }
                     if(type == 2){
