@@ -112,8 +112,8 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
         private void updateShip(float fracSec) {
             ship.update(fracSec);
             // keep ship within window boundaries
-            if (ship.getX() < boundaryLeft + ship.scale /(float) 0.69)
-                ship.setX(boundaryLeft + ship.scale /(float) 0.69);
+            if (ship.getX() < boundaryLeft + ship.scale /(float) 0.9)
+                ship.setX(boundaryLeft + ship.scale /(float) 0.9);
             if (ship.getX() > boundaryRight - ship.scale / (float)1.07)
                 ship.setX(boundaryRight - ship.scale / (float) 1.07);
             if (ship.getZ() < boundaryBottom + ship.scale / 2)
@@ -131,7 +131,29 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                 float obj1Z = obj1.getZ();
                 float obj2X = obj2.getX();
                 float obj2Z = obj2.getZ();
+<<<<<<< HEAD
                 float squaredHitDistance = ((0.2f + obj2.scale) / 2) * ((0.2f + obj2.scale) / 2);
+=======
+
+                float shipL = obj1.getX() -0.8f;
+                float shipR = obj1.getX() +0.7f;
+                float shipT = obj1.getZ() +0.1f;
+                float shipB = obj1.getZ() -0.1f;
+
+                float objL= obj2.getX()-(obj2.scale /2);
+                float objR= obj2.getX()+(obj2.scale/2);
+                float objT= obj2.getZ()+(obj2.scale/2);
+                float objB= obj2.getZ()-(obj2.scale/2);
+
+                if(shipT>=objB){
+                    if(objR>=shipL && objL<=shipR ) return true;
+                    if(objL <= shipR && objR >= shipL) return true;
+                    //return true;
+                }
+                return false;
+                /*
+                float squaredHitDistance = ((0.2f + obj2.scale) / 2) * ((1.4f + obj2.scale) / 2);
+>>>>>>> f089bfd15e4dee8c384880c3fdd7d61030ba4cf2
                 float squaredDistance = (obj1X - obj2X) * (obj1X - obj2X) + (obj1Z - obj2Z) * (obj1Z - obj2Z);
 
                 if(squaredDistance < squaredHitDistance)
@@ -139,11 +161,35 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                 return false;
             }
             if(obj2 instanceof SpaceShip){
+<<<<<<< HEAD
                 float obj1X = obj1.getX();
                 float obj1Z = obj1.getZ();
                 float obj2X = obj2.getX();
                 float obj2Z = obj2.getZ();
                 float squaredHitDistance = ((obj1.scale + 0.2f) / 2) * ((obj1.scale + 0.2f) / 2);
+=======
+
+
+                return areColliding(obj2,obj1);
+      /*          float shipL = obj2.getX() -0.7f;
+                float shipR = obj2.getX() +0.7f;
+                float shipT = obj2.getZ() +0.1f;
+                float shipB = obj2.getZ() -0.1f;
+
+                float objL= obj1.getX()-obj1.scale;
+                float objR= obj1.getX()+obj1.scale;
+                float objT= obj1.getZ()+obj1.scale;
+                float objB= obj1.getZ()-obj1.scale;
+
+                if(objB>=shipT && objT <= shipB && objL <= shipR && objR >= shipL){
+                    return true;
+                }
+                return false;
+
+
+               /*
+                float squaredHitDistance = ((obj1.scale + 0.2f) / 2) * ((obj1.scale + 1.4f) / 2);
+>>>>>>> f089bfd15e4dee8c384880c3fdd7d61030ba4cf2
                 float squaredDistance = (obj1X - obj2X) * (obj1X - obj2X) + (obj1Z - obj2Z) * (obj1Z - obj2Z);
 
                 if(squaredDistance < squaredHitDistance)
