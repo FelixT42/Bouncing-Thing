@@ -112,8 +112,8 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
         private void updateShip(float fracSec) {
             ship.update(fracSec);
             // keep ship within window boundaries
-            if (ship.getX() < boundaryLeft + ship.scale /(float) 0.69)
-                ship.setX(boundaryLeft + ship.scale /(float) 0.69);
+            if (ship.getX() < boundaryLeft + ship.scale /(float) 0.9)
+                ship.setX(boundaryLeft + ship.scale /(float) 0.9);
             if (ship.getX() > boundaryRight - ship.scale / (float)1.07)
                 ship.setX(boundaryRight - ship.scale / (float) 1.07);
             if (ship.getZ() < boundaryBottom + ship.scale / 2)
@@ -125,64 +125,73 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
 
         private boolean areColliding(SpaceObject obj1, SpaceObject obj2) {
 
-
             if(obj1 instanceof SpaceShip){
                 float obj1X = obj1.getX();
                 float obj1Z = obj1.getZ();
                 float obj2X = obj2.getX();
                 float obj2Z = obj2.getZ();
-<<<<<<< HEAD
-                float squaredHitDistance = ((0.2f + obj2.scale) / 2) * ((0.2f + obj2.scale) / 2);
-=======
 
-                float shipL = obj1.getX() -0.7f;
+                float shipL = obj1.getX() -0.8f;
                 float shipR = obj1.getX() +0.7f;
+                float shipT = obj1.getZ() +0.1f;
+                float shipB = obj1.getZ() -0.1f;
 
-                if ((shipL > obj2X-obj2.scale) && (shipR < obj2X +obj2.scale) && (obj2Z-obj2.scale <= obj1.getZ()+0.1f)){
-                    return true;
+                float objL= obj2.getX()-(obj2.scale /2);
+                float objR= obj2.getX()+(obj2.scale/2);
+                float objT= obj2.getZ()+(obj2.scale/2);
+                float objB= obj2.getZ()-(obj2.scale/2);
+
+                if(shipT>=objB){
+                    if(objR>=shipL && objL<=shipR ) return true;
+                    if(objL <= shipR && objR >= shipL) return true;
+                    //return true;
                 }
                 return false;
                 /*
                 float squaredHitDistance = ((0.2f + obj2.scale) / 2) * ((1.4f + obj2.scale) / 2);
->>>>>>> f089bfd15e4dee8c384880c3fdd7d61030ba4cf2
                 float squaredDistance = (obj1X - obj2X) * (obj1X - obj2X) + (obj1Z - obj2Z) * (obj1Z - obj2Z);
 
                 if(squaredDistance < squaredHitDistance)
                     return true;
                 return false;
+                */
             }
             if(obj2 instanceof SpaceShip){
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 1275926... 0.2.15
-                float obj1X = obj1.getX();
-                float obj1Z = obj1.getZ();
-                float obj2X = obj2.getX();
-                float obj2Z = obj2.getZ();
-<<<<<<< HEAD
-                float squaredHitDistance = ((obj1.scale + 0.2f) / 2) * ((obj1.scale + 0.2f) / 2);
-=======
-=======
->>>>>>> parent of 1275926... 0.2.15
 
-                float shipL = obj2.getX() -0.7f;
-                float shipR = obj2.getX() +0.7f;
 
-                if((shipL > obj1X-obj1.scale) && (shipR < obj1X +obj1.scale) && (obj1Z-obj1.scale <= obj2.getZ()+0.1f)){
-                    return true;
+                return areColliding(obj2,obj1);
+            }
+            if(obj1 instanceof BorgCube){
+
+                float objL= obj2.getX()-(obj2.scale /2);
+                float objR= obj2.getX()+(obj2.scale/2);
+                float objT= obj2.getZ()+(obj2.scale/2);
+                float objB= obj2.getZ()-(obj2.scale/2);
+
+                float borgL = obj1.getX() -0.8f;
+                float borgR = obj1.getX() +0.8f;
+                float borgT = obj1.getZ() +0.1f;
+                float borgB = obj1.getZ() -0.1f;
+
+
+                if(borgT<=objB && objT > borgB){
+                    if(objR>=borgL && objL<=borgR )
+                        return true;
+                    if(objL <= borgR && objR >= borgL)
+                        return true;
+                }
+
+                if(borgB<=objT && objB > borgT) {
+                    if (objR >= borgL && objL <= borgR)
+                        return true;
+                    if (objL <= borgR && objR >= borgL)
+                        return true;
                 }
                 return false;
+            }
+            if(obj2 instanceof BorgCube){
 
-
-               /*
-                float squaredHitDistance = ((obj1.scale + 0.2f) / 2) * ((obj1.scale + 1.4f) / 2);
->>>>>>> f089bfd15e4dee8c384880c3fdd7d61030ba4cf2
-                float squaredDistance = (obj1X - obj2X) * (obj1X - obj2X) + (obj1Z - obj2Z) * (obj1Z - obj2Z);
-
-                if(squaredDistance < squaredHitDistance)
-                    return true;
-                return false;
+                return areColliding(obj2,obj1);
             }
 
             float obj1X = obj1.getX();
@@ -296,21 +305,6 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                         float cv2[] = otherObstacle.velocity;
                         float csv1 = cv1[2] / cv1[0]; // slope of velocity 1
                         float csv2 = cv2[2] / cv2[0]; // slope of velocity 2
-
-
-                        float sx = obstacle.getX();
-                        float sz = obstacle.getZ();
-                        float bx = otherObstacle.getX();
-                        float bz = otherObstacle.getZ();
-
-                        if ()
-
-
-
-
-
-
-
 
                         float csz = (oaz - az) / (oax - ax); // central slope between centers
                         float cst = -1.0f / csz; // tangent slope perpendicular to central line

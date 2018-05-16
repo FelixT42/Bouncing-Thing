@@ -17,6 +17,7 @@ public class BorgCube extends Obstacle {
         if(!buffersInitialized) {
             // Breite und Dünne Hindernisse erstellen
             float vertices[] = {
+
                     -0.8f,  0.5f, -0.1f,	// btl 0
                     -0.8f, -0.5f, -0.1f,    // bbl 1
                      0.8f, -0.5f, -0.1f,	// bbr 2
@@ -25,6 +26,7 @@ public class BorgCube extends Obstacle {
                     -0.8f, -0.5f,  0.1f,	// fbl 5
                      0.8f, -0.5f,  0.1f,	// fbr 6
                      0.8f,  0.5f,  0.1f	    // ftr 7
+
             };
             short quads[] = {
                     3, 2, 1, 0, // back
