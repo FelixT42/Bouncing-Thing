@@ -112,8 +112,8 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
         private void updateShip(float fracSec) {
             ship.update(fracSec);
             // keep ship within window boundaries
-            if (ship.getX() < boundaryLeft + ship.scale /(float) 0.69)
-                ship.setX(boundaryLeft + ship.scale /(float) 0.69);
+            if (ship.getX() < boundaryLeft + ship.scale /(float) 0.9)
+                ship.setX(boundaryLeft + ship.scale /(float) 0.9);
             if (ship.getX() > boundaryRight - ship.scale / (float)1.07)
                 ship.setX(boundaryRight - ship.scale / (float) 1.07);
             if (ship.getZ() < boundaryBottom + ship.scale / 2)
@@ -131,11 +131,20 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                 float obj2X = obj2.getX();
                 float obj2Z = obj2.getZ();
 
-                float shipL = obj1.getX() -0.7f;
+                float shipL = obj1.getX() -0.8f;
                 float shipR = obj1.getX() +0.7f;
+                float shipT = obj1.getZ() +0.1f;
+                float shipB = obj1.getZ() -0.1f;
 
-                if ((shipL > obj2X-obj2.scale) && (shipR < obj2X +obj2.scale) && (obj2Z-obj2.scale <= obj1.getZ()+0.1f)){
-                    return true;
+                float objL= obj2.getX()-(obj2.scale /2);
+                float objR= obj2.getX()+(obj2.scale/2);
+                float objT= obj2.getZ()+(obj2.scale/2);
+                float objB= obj2.getZ()-(obj2.scale/2);
+
+                if(shipT>=objB){
+                    if(objR>=shipL && objL<=shipR ) return true;
+                    if(objL <= shipR && objR >= shipL) return true;
+                    //return true;
                 }
                 return false;
                 /*
@@ -148,15 +157,20 @@ public class SpaceGLSurfaceView extends GLSurfaceView {
                 */
             }
             if(obj2 instanceof SpaceShip){
-                float obj1X = obj1.getX();
-                float obj1Z = obj1.getZ();
-                float obj2X = obj2.getX();
-                float obj2Z = obj2.getZ();
 
-                float shipL = obj2.getX() -0.7f;
+
+                return areColliding(obj2,obj1);
+      /*          float shipL = obj2.getX() -0.7f;
                 float shipR = obj2.getX() +0.7f;
+                float shipT = obj2.getZ() +0.1f;
+                float shipB = obj2.getZ() -0.1f;
 
-                if((shipL > obj1X-obj1.scale) && (shipR < obj1X +obj1.scale) && (obj1Z-obj1.scale <= obj2.getZ()+0.1f)){
+                float objL= obj1.getX()-obj1.scale;
+                float objR= obj1.getX()+obj1.scale;
+                float objT= obj1.getZ()+obj1.scale;
+                float objB= obj1.getZ()-obj1.scale;
+
+                if(objB>=shipT && objT <= shipB && objL <= shipR && objR >= shipL){
                     return true;
                 }
                 return false;
